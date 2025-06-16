@@ -10,7 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 BASE_URL = "https://www.swissgrid.ch"
 TARGET_PAGE = "https://www.swissgrid.ch/en/home/operation/grid-data/generation.html#end-user-consumption"
-download_folder = r"C:\Users\joseph\OneDrive - Emch+Berger Gruppe\Desktop\Personal\Misc\ML_AI_db_Py\energy_forecast_project\data\raw"
+download_folder = r"xxxx\energy_forecast_project\data\raw"
 def download_latest_excel(download_folder):
     print("🌐 Opening browser to access Swissgrid download page...")
 
