@@ -8,7 +8,7 @@ import os
 import glob
 
 # 💾 Define paths
-DATA_DIR = r"C:\Users\joseph\OneDrive - Emch+Berger Gruppe\Desktop\Personal\Misc\ML_AI_db_Py\energy_forecast_project\data"
+DATA_DIR = r"xxxxx\data"
 RAW_DIR = os.path.join(DATA_DIR, "raw")
 PROCESSED_DIR = os.path.join(DATA_DIR, "processed")
 DATABASE_PATH = "database/forecast_results.db"
