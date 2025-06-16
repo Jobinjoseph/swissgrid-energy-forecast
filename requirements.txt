@@ -1,0 +1,9 @@
+pandas
+matplotlib
+seaborn
+prophet
+neuralprophet
+selenium
+xlwings
+openpyxl
+webdriver-manager
