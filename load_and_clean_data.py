@@ -9,7 +9,7 @@ import glob
 import pandas as pd
 import openpyxl
 import xlwings as xw
-folder_path = r"C:\Users\joseph\OneDrive - Emch+Berger Gruppe\Desktop\Personal\Misc\ML_AI_db_Py\energy_forecast_project\data\raw"
+folder_path = r"xxx\energy_forecast_project\data\raw"
 excel_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
 if not excel_files:
     raise FileNotFoundError(f"No Excel file found in folder: {folder_path}")
