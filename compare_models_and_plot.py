@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jun 16 13:31:18 2025
-
 @author: joseph
 """
 
@@ -25,7 +23,7 @@ def compare_models_plot(forecast_Prophet, forecast_neural, df):
     df_plot = df_actual.merge(forecast_Prophet, on='ds', how='outer').merge(forecast_neural, on='ds', how='outer')
     df_plot = df_plot.sort_values('ds')
 
-    # 🖼 Plot
+    # Plot
     plt.figure(figsize=(16, 6))
     if df_plot['y'].notna().sum() > 0:
         plt.plot(df_plot['ds'], df_plot['y'], label='Actual', linewidth=1.5, color='black')
@@ -36,7 +34,7 @@ def compare_models_plot(forecast_Prophet, forecast_neural, df):
     if df_plot['yhat_neural'].notna().sum() > 0:
         plt.plot(df_plot['ds'], df_plot['yhat_neural'], label='NeuralProphet Forecast', linestyle='--', color='green')
 
-    plt.title("📊 Energy Load Forecast: Prophet vs NeuralProphet")
+    plt.title("Energy Load Forecast: Prophet vs NeuralProphet")
     plt.xlabel("Date")
     plt.ylabel("Load [MWh]")
     plt.legend()
@@ -44,14 +42,14 @@ def compare_models_plot(forecast_Prophet, forecast_neural, df):
     plt.tight_layout()
     plt.show()
 
-    # 📈 Compare starting and ending forecast value
+    # Compare starting and ending forecast value
     try:
         last_actual = df_plot[df_plot['y'].notna()]['y'].iloc[-1]
         future_prophet = df_plot[df_plot['yhat_prophet'].notna() & df_plot['y'].isna()]
         end_prophet = future_prophet['yhat_prophet'].iloc[-1]
 
-        trend = "⬆️ increase" if end_prophet > last_actual else "⬇️ decrease"
+        trend = "increase" if end_prophet > last_actual else "decrease"
         percent_change = ((end_prophet - last_actual) / last_actual) * 100
-        print(f"\n🔍 Based on Prophet, the load is expected to {trend} by {percent_change:.2f}% over the next 15 days.")
+        print(f"\n Based on Prophet, the load is expected to {trend} by {percent_change:.2f}% over the next 15 days.")
     except:
-        print("⚠️ Could not compute trend from Prophet (missing values).")
+        print("Could not compute trend from Prophet (missing values).")
