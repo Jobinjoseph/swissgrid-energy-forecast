@@ -1,19 +1,19 @@
-# ⚡ Swissgrid Energy Forecasting
+# Swissgrid Energy Forecasting
 
 This project downloads Swissgrid 15-minute energy consumption data and uses **Prophet** and **NeuralProphet** to forecast future consumption and visualize seasonality.
 
 ---
 
-## 📦 Features
+## Features
 
-- 🔄 Automatically fetches the latest Excel data from [Swissgrid](https://www.swissgrid.ch/)
-- 📈 Forecasts using [Facebook Prophet](https://facebook.github.io/prophet/) and [NeuralProphet](https://neuralprophet.com/)
-- 📊 Visualizes forecasts and seasonal trends
-- 💡 Indicates whether consumption is expected to rise or fall in the next 15 days
+- Automatically fetches the latest Excel data from [Swissgrid](https://www.swissgrid.ch/)
+- Forecasts using [Facebook Prophet](https://facebook.github.io/prophet/) and [NeuralProphet](https://neuralprophet.com/)
+- Visualizes forecasts and seasonal trends
+- Indicates whether consumption is expected to rise or fall in the next 15 days
 
 ---
 
-## 🛠 Installation
+## Installation
 
 ```bash
 pip install -r requirements.txt
@@ -21,7 +21,7 @@ pip install -r requirements.txt
 Run the Project
 python main.py
 
-📁 Folder Structure
+Folder Structure
 main.py – orchestrates the pipeline
 
 fetch_latest_data.py – downloads Swissgrid Excel file using Selenium
