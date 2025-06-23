@@ -12,7 +12,7 @@ BASE_URL = "https://www.swissgrid.ch"
 TARGET_PAGE = "https://www.swissgrid.ch/en/home/operation/grid-data/generation.html#end-user-consumption"
 download_folder = r"xxxx\energy_forecast_project\data\raw"
 def download_latest_excel(download_folder):
-    print("🌐 Opening browser to access Swissgrid download page...")
+    print("Opening browser to access Swissgrid download page...")
 
     options = Options()
     options.add_argument("--headless")  # Run in the background
@@ -23,26 +23,26 @@ def download_latest_excel(download_folder):
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.get(TARGET_PAGE)
     
-    print("⏳ Waiting for JavaScript content to load...")
+    print("Waiting for JavaScript content to load...")
     time.sleep(10)  # Give enough time for the page to fully render
 
     # Find all <a> tags
     links = driver.find_elements(By.TAG_NAME, "a")
-    print(f"🔍 Total <a> links found: {len(links)}")
+    print(f"Total <a> links found: {len(links)}")
 
     # Extract and print all hrefs
     excel_links = []
     for link in links:
         href = link.get_attribute("href")
         if href:
-            print("➡️ Found link:", href)
+            print("Found link:", href)
             if href.endswith(".xlsx"):
                 excel_links.append(href)
 
     driver.quit()
 
     if not excel_links:
-        print("❌ No Excel file link found.")
+        print("No Excel file link found.")
         return None
 
     # Use first Excel file link
@@ -51,16 +51,16 @@ def download_latest_excel(download_folder):
     local_path = os.path.join(download_folder, filename)
 
     if os.path.exists(local_path):
-        print("✅ File already exists locally.")
+        print("File already exists locally.")
         return local_path
 
-    print(f"⬇️ Downloading Excel file from: {latest_url}")
+    print(f"Downloading Excel file from: {latest_url}")
     os.makedirs(download_folder, exist_ok=True)
     r = requests.get(latest_url)
     with open(local_path, "wb") as f:
         f.write(r.content)
 
-    print(f"✅ Downloaded and saved as: {local_path}")
+    print(f"Downloaded and saved as: {local_path}")
     return local_path
 if __name__ == "__main__":
     download_latest_excel(download_folder)
