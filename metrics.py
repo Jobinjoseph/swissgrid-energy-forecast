@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jun 15 11:31:59 2025
-
 @author: joseph
 """
 
@@ -30,8 +28,8 @@ def evaluate_forecast(df_actual, df_forecast, metric_functions=None):
     :param metric_functions: List of functions to evaluate (e.g., [calculate_rmse, calculate_mape])
     :return: dict of metric results
     """
-    print("📦 df_actual type:", type(df_actual))
-    print("📦 df_forecast type:", type(df_forecast))
+    print("df_actual type:", type(df_actual))
+    print("df_forecast type:", type(df_forecast))
     if metric_functions is None:
         metric_functions = [calculate_rmse, calculate_mape]
 
