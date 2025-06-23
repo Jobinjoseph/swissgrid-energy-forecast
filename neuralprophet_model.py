@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jun 15 11:33:04 2025
-
 @author: joseph
 """
 
@@ -23,15 +21,15 @@ def train_neuralprophet_model(df, forecast_periods=1440, plot_result=True):
     # Predict both historical and future values
     forecast_neural = model.predict(future)
     # Check how many rows have actual 'y' values
-    print("✅ Rows with actual values:", forecast_neural['y'].notna().sum())
-    print("❌ Rows with missing actual values:", forecast_neural['y'].isna().sum())
+    print("Rows with actual values:", forecast_neural['y'].notna().sum())
+    print("Rows with missing actual values:", forecast_neural['y'].isna().sum())
     
     # Show a few rows that *do* have actual values
-    print("\n📄 Sample rows with actuals:")
+    print("\nSample rows with actuals:")
     print(forecast_neural[forecast_neural['y'].notna()].head())
     
     # Show a few rows that are purely forecast (no actuals)
-    print("\n🔮 Sample forecast-only rows:")
+    print("\nSample forecast-only rows:")
     print(forecast_neural[forecast_neural['y'].isna()].head())
 
 
@@ -41,7 +39,7 @@ def train_neuralprophet_model(df, forecast_periods=1440, plot_result=True):
     # Rename yhat1 to yhat for consistency
     forecast_neural.rename(columns={'yhat1': 'yhat'}, inplace=True)
 
-    # ✅ PLOT if desired
+    # PLOT if desired
     if plot_result:
         plt.figure(figsize=(15, 5))
         plt.plot(forecast_neural['ds'], forecast_neural['yhat'], label='Forecast_neural (yhat)', linestyle='--')
