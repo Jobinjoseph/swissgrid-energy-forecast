@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jun 15 11:29:13 2025
-
 @author: joseph
 """
 import os
@@ -45,7 +43,7 @@ def load_and_clean_data(file_path):
     # Rename timestamp column to 'ds'
     timestamp_col = [col for col in df.columns if "Zeitstempel" in col or "timestamp" in col]
     if not timestamp_col:
-        raise ValueError("❗ Could not find a timestamp column.")
+        raise ValueError("Could not find a timestamp column.")
     df.rename(columns={timestamp_col[0]: "ds"}, inplace=True)
 
     # Parse datetime
@@ -54,8 +52,8 @@ def load_and_clean_data(file_path):
     # Find consumption column
     target_col = [col for col in df.columns if "Verbrauch Regelzone CH - Ausländische Gebiete\nConsumption control area CH - foreign territories - kWh" in col or "Consumption control area CH" in col]
     if not target_col:
-        print("❗ Could not find expected consumption column.")
-        print("🔍 Available columns:", df.columns[:10].tolist())
+        print("Could not find expected consumption column.")
+        print("Available columns:", df.columns[:10].tolist())
         raise ValueError("No usable consumption column found.")
 
     df.rename(columns={target_col[0]: "y"}, inplace=True)
